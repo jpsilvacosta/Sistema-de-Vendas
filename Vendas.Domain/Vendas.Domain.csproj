@@ -4,7 +4,21 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <BaseOutputPath>C:\Users\joao\source\repos\Sistema-de-Vendas</BaseOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Common\Base\Entity.cs" />
+    <Compile Include="Common\Base\ValueObject.cs" />
+    <Compile Include="Common\Enums\EstadoCivil.cs" />
+    <Compile Include="Common\Enums\MetodoPagamento.cs" />
+    <Compile Include="Common\Enums\Sexo.cs" />
+    <Compile Include="Common\Enums\StatusPagamento.cs" />
+    <Compile Include="Common\Enums\StatusPedido.cs" />
+    <Compile Include="Common\Exceptions\DomainException.cs" />
+    <Compile Include="Common\Validations\Guard.cs" />
+    <Compile Include="ValueObjects\EnderecoEntrega.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Entities\" />

@@ -25,12 +25,12 @@ namespace Vendas.Domain.ValueObjects
             Guard.AgainstNullOrWhiteSpace(cidade, nameof(Cidade));
             Guard.AgainstNullOrWhiteSpace(pais, nameof(Pais));
 
-            if(!Regex.IsMatch(cep, @"^\d{5}-\d{3}$"))
+            if(!Regex.IsMatch(cep ?? "", @"^\d{5}-\d{3}$"))
             {
                 throw new DomainException("CEP inválido. O formato correto é 00000-000.");
             }
 
-            Cep = cep;
+            Cep = cep!;
             Logradouro = logradouro;
             Complemento = complemento ?? string.Empty;
             Bairro = bairro;
@@ -56,7 +56,7 @@ namespace Vendas.Domain.ValueObjects
             yield return Pais;
         }
 
-        public string FormatarCompleto()
+        public string FormatarEndereco()
         {
             return $"{Logradouro}, {Complemento}, {Bairro}, {Cidade} - {Estado}, {Pais}, CEP: {Cep}";
         }
