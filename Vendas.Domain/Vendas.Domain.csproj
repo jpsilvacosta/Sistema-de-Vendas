@@ -17,11 +17,8 @@
     <Compile Include="Common\Enums\StatusPedido.cs" />
     <Compile Include="Common\Exceptions\DomainException.cs" />
     <Compile Include="Common\Validations\Guard.cs" />
+    <Compile Include="Entities\ItemPedido.cs" />
     <Compile Include="ValueObjects\EnderecoEntrega.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>
