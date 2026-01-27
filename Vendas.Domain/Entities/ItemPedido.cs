@@ -15,8 +15,8 @@ namespace Vendas.Domain.Entities
 
         internal ItemPedido(Guid produtoId, string nomeProduto, decimal precoUnitario, int quantidade)
         {
-            Guard.AgainstEmptyGuid(produtoId, nameof(produtoId));
-            Guard.AgainstNullOrWhiteSpace(nomeProduto, nameof(nomeProduto));
+            Guard.AgainstEmptyGuid(produtoId, nameof(produtoId), "ProdutoId inválido.");
+            Guard.AgainstNullOrWhiteSpace(nomeProduto, nameof(nomeProduto), "O nome do produto é obrigatório.");
             Guard.Against<DomainException>(precoUnitario <= 0, "O preço unitário deve ser maior que zero.");
             Guard.Against<DomainException>(quantidade <= 0, "A quantidade deve ser maior que zero.");
 
