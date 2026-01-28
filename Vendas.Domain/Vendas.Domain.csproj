@@ -25,6 +25,9 @@
     <Compile Include="Events\IDomainEvent.cs" />
     <Compile Include="Events\PagamentoAprovadoEvent.cs" />
     <Compile Include="Events\PagamentoRejeitadoEvent.cs" />
+    <Compile Include="Events\PedidoCanceladoEvent.cs" />
+    <Compile Include="Events\PedidoEntregueEvent.cs" />
+    <Compile Include="Events\PedidoEnviadoEvent.cs" />
     <Compile Include="ValueObjects\EnderecoEntrega.cs" />
     <Compile Include="ValueObjects\MotivoCancelamento.cs" />
   </ItemGroup>
