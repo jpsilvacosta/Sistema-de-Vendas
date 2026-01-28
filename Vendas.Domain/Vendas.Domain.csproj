@@ -19,6 +19,11 @@
     <Compile Include="Common\Exceptions\DomainException.cs" />
     <Compile Include="Common\Validations\Guard.cs" />
     <Compile Include="Entities\ItemPedido.cs" />
+    <Compile Include="Entities\Pagamento.cs" />
+    <Compile Include="Events\DomainEventBase.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\PagamentoAprovadoEvent.cs" />
+    <Compile Include="Events\PagamentoRejeitadoEvent.cs" />
     <Compile Include="ValueObjects\EnderecoEntrega.cs" />
   </ItemGroup>
 

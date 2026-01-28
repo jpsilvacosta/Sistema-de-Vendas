@@ -97,7 +97,7 @@ namespace Vendas.Domain.Tests.Entities
             item.DataAtualizacao.Should().NotBeNull();
         }
 
-        [Fact(DisplayName = = "Deve lançar exceção ao adicionar unidades inválidas")]
+        [Fact(DisplayName = "Deve lançar exceção ao adicionar unidades inválidas")]
         public void AdicionarUnidades_DeveLancarExcecao_QuandoValorInvalido()
         {
             // Arrange
