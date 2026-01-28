@@ -21,6 +21,7 @@
     <Compile Include="Common\Validations\Guard.cs" />
     <Compile Include="Entities\ItemPedido.cs" />
     <Compile Include="Entities\Pagamento.cs" />
+    <Compile Include="Entities\Pedido.cs" />
     <Compile Include="Events\DomainEventBase.cs" />
     <Compile Include="Events\IDomainEvent.cs" />
     <Compile Include="Events\PagamentoAprovadoEvent.cs" />
