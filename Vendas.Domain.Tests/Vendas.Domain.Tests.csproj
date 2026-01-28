@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Compile Include="Entities\ItemPedidoTests.cs" />
+    <Compile Include="Entities\PagamentoTests.cs" />
     <Compile Include="ValueObjects\EnderecoEntregaTests.cs" />
   </ItemGroup>
 
