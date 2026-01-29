@@ -107,5 +107,76 @@ namespace Vendas.Domain.Tests.Clientes.Entities
             act.Should().Throw<DomainException>();
         }
 
+        [Fact(DisplayName = "Deve atualizar endereço com dados válidos")]
+        public void Deve_Atualizar_Endereco_Com_Dados_Validos()
+        {
+            //Arrange
+            var endereco = CriarEnderecoValido();
+
+            //Act
+            endereco.Atualizar(
+                cep: "87654321",
+                logradouro: "Rua B",
+                numero: "200",
+                bairro: "Leste",
+                cidade: "Rio de Janeiro",
+                estado: "RJ",
+                pais: "Brasil",
+                complemento: "Apto 121"
+                );
+
+            //Assert
+            endereco.Cep.Should().Be("87654321");
+            endereco.Logradouro.Should().Be("Rua B");
+            endereco.Numero.Should().Be("200");
+            endereco.Bairro.Should().Be("Leste");
+            endereco.Cidade.Should().Be("Rio de Janeiro");
+            endereco.Estado.Should().Be("RJ");
+            endereco.Pais.Should().Be("Brasil");
+            endereco.Complemento.Should().Be("Apto 121");
+        }
+
+        [Fact(DisplayName = "Deve lançar erro ao atualizar com CEP inválido")]
+        public void Deve_Lancar_Erro_Ao_Atualizar_Com_CEP_Invalido()
+        {
+            //Arrange
+            var endereco = CriarEnderecoValido();
+
+            //Act
+            Action act = () => endereco.Atualizar(
+                cep: "123",
+                logradouro: "Rua Teste",
+                numero: "10",
+                bairro: "Centro",
+                cidade: "SP",
+                estado: "SP",
+                pais: "Brasil"
+                );
+
+            //Assert
+            act.Should().Throw<DomainException>()
+                .WithMessage("CEP inválido.");
+        }
+
+        [Fact(DisplayName = "Deve lançar erro ao atualizar com campo obrigatório inválido.")]
+        public void Deve_Lancar_Erro_Ao_Atualizar_Com_Campo_Obrigatorio_Invalido()
+        {
+            //Arrange
+            var endereco = CriarEnderecoValido();
+
+            //Act
+            Action act = () => endereco.Atualizar(
+                cep: "12345678",
+                logradouro: "",
+                numero: "10",
+                bairro: "Centro",
+                cidade: "SP",
+                estado: "SP",
+                pais: "Brasil"
+                );
+
+            //Assert
+            act.Should().Throw<DomainException>();
+        }
     }
 }
