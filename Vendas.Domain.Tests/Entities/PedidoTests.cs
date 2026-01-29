@@ -396,7 +396,7 @@ namespace Vendas.Domain.Tests.Entities
 
             //Assert
             act.Should().Throw<DomainException>()
-                .WithMessage("O pedido só pode ser marcado como 'Enviado' após estar 'Em Separação'.");
+                .WithMessage("O pedido só pode ser marcado como 'Enviado' se estiver 'Em Separação'.");
         }
 
         [Fact(DisplayName = "Deve marcar pedido como Entregue")]
@@ -474,7 +474,7 @@ namespace Vendas.Domain.Tests.Entities
 
             //Assert
             act.Should().Throw<DomainException>()
-                .WithMessage("Não é possível caneclar um pedido que já está em separação ou posterior.");
+                .WithMessage("Não é possível cancelar um pedido que já está em separação ou posterior.");
         }
     }
 }

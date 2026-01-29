@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Vendas.Domain.Common.Base;
 using Vendas.Domain.Common.Exceptions;
 using Vendas.Domain.Entities;
 
@@ -106,6 +107,93 @@ namespace Vendas.Domain.Tests.Entities
             Action act = () => item.AdicionarUnidades(0);
             // Assert
             act.Should().Throw<DomainException>().WithMessage("Deve-se adicionar pelo menos uma unidade.");
+        }
+
+        [Fact(DisplayName = "Deve remover unidades com sucesso quando valor válido")]
+        public void RemoverUnidades_DeveRemoverComSucesso_QuandoValorValido()
+        {
+            // Arrange
+            var item = CriarItemValido(preco: 100m, quantidade: 5);
+
+            // Act
+            item.RemoverUnidades(2);
+
+            // Assert
+            item.Quantidade.Should().Be(3);
+            item.ValorTotal.Should().Be(item.PrecoUnitario * item.Quantidade);
+            item.DataAtualizacao.Should().NotBeNull();
+        }
+
+        [Theory(DisplayName = "Deve lançar exceção ao remover unidades inválidas")]
+        [InlineData(0, "Deve-se remover pelo menos uma unidade.")]
+        [InlineData(3, "Não é possível remover mais unidades do que o total existente.")]
+        public void RemoverUnidades_DeveLancarExcecao_QuandoValorInvalido(int unidades, string mensagem)
+        {
+            // Arrange
+            var item = CriarItemValido(preco: 100m, quantidade: 2);
+
+            // Act
+            Action act = () => item.RemoverUnidades(unidades);
+
+            // Assert
+            act.Should().Throw<DomainException>()
+                .WithMessage(mensagem);
+        }
+
+        [Fact(DisplayName = "Deve lançar exceção ao remover todas as unidades")]
+        public void RemoverUnidades_DeveLancarExcecao_QuandoRemoverTodasUnidades()
+        {
+            // Arrange
+            var item = CriarItemValido(preco: 100m, quantidade: 2);
+            // Act
+            Action act = () => item.RemoverUnidades(2);
+            // Assert
+            act.Should().Throw<DomainException>()
+                .WithMessage("O item do pedido deve conter pelo menos uma unidade.");
+        }
+
+        [Fact(DisplayName = "Deve atualizar preço unitário com sucesso quando valor válido")]
+        public void AtualizarPrecoUnitario_DeveAtualizarComSucesso_QuandoValorValido()
+        {
+            // Arrange
+            var item = CriarItemValido(preco: 100m, quantidade: 2);
+
+            // Act
+            item.AtualizarPrecoUnitario(150m);
+
+            // Assert
+            item.PrecoUnitario.Should().Be(150m);
+            item.ValorTotal.Should().Be(item.PrecoUnitario * item.Quantidade);
+            item.DataAtualizacao.Should().NotBeNull();
+        }
+
+        [Fact(DisplayName = "Deve lançar exceção ao atualizar preço unitário inválido")]
+        public void AtualizarPrecoUnitario_DeveLancarExcecao_QuandoValorInvalido()
+        {
+            // Arrange
+            var item = CriarItemValido(preco: 100m, quantidade: 2);
+
+            // Act
+            Action act = () => item.AtualizarPrecoUnitario(0);
+
+            // Assert
+            act.Should().Throw<DomainException>()
+                .WithMessage("O preço unitário deve ser maior que zero.");
+        }
+
+        [Fact(DisplayName = "Dois itens com mesmo Id devem ser considerados iguais")]
+        public void Equals_DeveRetornarTrue_QuandoMesmoId()
+        {
+            // Arrange
+            var item1 = CriarItemValido();
+            var item2 = CriarItemValido();
+
+            // Forçando mesmo Id para teste
+            typeof(Entity).GetProperty("Id")!.SetValue(item2, item1.Id);
+
+            // Act & Assert
+            (item1 == item2).Should().BeTrue();
+            item1.Equals(item2).Should().BeTrue();
         }
     }
 }
