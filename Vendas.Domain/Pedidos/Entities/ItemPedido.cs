@@ -2,7 +2,7 @@
 using Vendas.Domain.Common.Exceptions;
 using Vendas.Domain.Common.Validations;
 
-namespace Vendas.Domain.Entities
+namespace Vendas.Domain.Pedidos.Entities
 {
     public sealed class ItemPedido : Entity
     {

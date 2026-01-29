@@ -1,4 +1,4 @@
-﻿using Vendas.Domain.Events;
+﻿using Vendas.Domain.Pedidos.Events;
 
 namespace Vendas.Domain.Common.Base
 {

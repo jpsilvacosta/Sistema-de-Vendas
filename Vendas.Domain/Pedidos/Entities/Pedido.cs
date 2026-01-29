@@ -2,10 +2,10 @@
 using Vendas.Domain.Common.Enums;
 using Vendas.Domain.Common.Exceptions;
 using Vendas.Domain.Common.Validations;
-using Vendas.Domain.Events;
-using Vendas.Domain.ValueObjects;
+using Vendas.Domain.Pedidos.Events;
+using Vendas.Domain.Pedidos.ValueObjects;
 
-namespace Vendas.Domain.Entities
+namespace Vendas.Domain.Pedidos.Entities
 {
     public sealed class Pedido : AggregateRoot
     {

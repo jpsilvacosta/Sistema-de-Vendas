@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using Vendas.Domain.Common.Enums;
 using Vendas.Domain.Common.Exceptions;
-using Vendas.Domain.Entities;
-using Vendas.Domain.Events;
+using Vendas.Domain.Pedidos.Entities;
+using Vendas.Domain.Pedidos.Events;
 
-namespace Vendas.Domain.Tests.Entities
+namespace Vendas.Domain.Tests.Pedidos.Entities
 {
     public class PagamentoTests
     {

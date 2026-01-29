@@ -9,10 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Entities\ItemPedidoTests.cs" />
-    <Compile Include="Entities\PagamentoTests.cs" />
-    <Compile Include="Entities\PedidoTests.cs" />
-    <Compile Include="ValueObjects\EnderecoEntregaTests.cs" />
+    <Compile Include="Pedidos\Entities\ItemPedidoTests.cs" />
+    <Compile Include="Pedidos\Entities\PagamentoTests.cs" />
+    <Compile Include="Pedidos\Entities\PedidoTests.cs" />
+    <Compile Include="Pedidos\ValueObjects\EnderecoEntregaTests.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +29,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Vendas.Domain\Vendas.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Clientes\Entities\" />
+    <Folder Include="Clientes\ValueObjects\" />
   </ItemGroup>
 
 </Project>

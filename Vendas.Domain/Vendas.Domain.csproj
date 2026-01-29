@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Clientes\Entities\Endereco.cs" />
     <Compile Include="Common\Base\AggregateRoot.cs" />
     <Compile Include="Common\Base\Entity.cs" />
     <Compile Include="Common\Base\ValueObject.cs" />
@@ -19,18 +20,23 @@
     <Compile Include="Common\Enums\StatusPedido.cs" />
     <Compile Include="Common\Exceptions\DomainException.cs" />
     <Compile Include="Common\Validations\Guard.cs" />
-    <Compile Include="Entities\ItemPedido.cs" />
-    <Compile Include="Entities\Pagamento.cs" />
-    <Compile Include="Entities\Pedido.cs" />
-    <Compile Include="Events\DomainEventBase.cs" />
-    <Compile Include="Events\IDomainEvent.cs" />
-    <Compile Include="Events\PagamentoAprovadoEvent.cs" />
-    <Compile Include="Events\PagamentoRejeitadoEvent.cs" />
-    <Compile Include="Events\PedidoCanceladoEvent.cs" />
-    <Compile Include="Events\PedidoEntregueEvent.cs" />
-    <Compile Include="Events\PedidoEnviadoEvent.cs" />
-    <Compile Include="ValueObjects\EnderecoEntrega.cs" />
-    <Compile Include="ValueObjects\MotivoCancelamento.cs" />
+    <Compile Include="Pedidos\Entities\ItemPedido.cs" />
+    <Compile Include="Pedidos\Entities\Pagamento.cs" />
+    <Compile Include="Pedidos\Entities\Pedido.cs" />
+    <Compile Include="Pedidos\Events\DomainEventBase.cs" />
+    <Compile Include="Pedidos\Events\IDomainEvent.cs" />
+    <Compile Include="Pedidos\Events\PagamentoAprovadoEvent.cs" />
+    <Compile Include="Pedidos\Events\PagamentoRejeitadoEvent.cs" />
+    <Compile Include="Pedidos\Events\PedidoCanceladoEvent.cs" />
+    <Compile Include="Pedidos\Events\PedidoEntregueEvent.cs" />
+    <Compile Include="Pedidos\Events\PedidoEnviadoEvent.cs" />
+    <Compile Include="Pedidos\ValueObjects\EnderecoEntrega.cs" />
+    <Compile Include="Pedidos\ValueObjects\MotivoCancelamento.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Clientes\Events\" />
+    <Folder Include="Clientes\ValueObjects\" />
   </ItemGroup>
 
 </Project>
