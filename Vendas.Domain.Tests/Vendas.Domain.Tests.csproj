@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Clientes\Entities\EnderecoTests.cs" />
     <Compile Include="Pedidos\Entities\ItemPedidoTests.cs" />
     <Compile Include="Pedidos\Entities\PagamentoTests.cs" />
     <Compile Include="Pedidos\Entities\PedidoTests.cs" />
@@ -32,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Clientes\Entities\" />
     <Folder Include="Clientes\ValueObjects\" />
   </ItemGroup>
 
