@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Clientes\Events\" />
-    <Folder Include="Clientes\ValueObjects\" />
+    <Folder Include="Common\Enums\" />
   </ItemGroup>
 
 </Project>
