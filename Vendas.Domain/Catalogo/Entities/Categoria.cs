@@ -14,7 +14,7 @@ namespace Vendas.Domain.Catalogo.Entities
         public Categoria(string nome, string? descricao = null)
         {
             Guard.AgainstNullOrWhiteSpace(nome, nameof(nome), "Nome é obrigatório.");
-            Guard.Against<DomainException>(nome.Length < 3, "Nome deve ter ao menos 3 caracteres");
+            Guard.Against<DomainException>(nome.Length < 3, "Nome deve ter ao menos 3 caracteres.");
 
             Nome = nome.Trim();
             Descricao = descricao;
@@ -30,7 +30,7 @@ namespace Vendas.Domain.Catalogo.Entities
             AddDomainEvent(new CategoriaAtivadaEvent(Id));
         }
 
-        public void Desativar()
+        public void Inativar()
         {
             Guard.Against<DomainException>(!Ativa, "Categoria já está inativa.");
 
@@ -42,6 +42,14 @@ namespace Vendas.Domain.Catalogo.Entities
         public void AlterarDescricao(string? novaDescricao)
         {
             Descricao = novaDescricao;
+            SetDataAtualizacao();
+        }
+
+        public void AlterarNome(string novoNome)
+        {
+            Guard.Against<DomainException>(novoNome.Length < 3, "Nome deve ter ao menos 3 caracteres.");
+
+            Nome = novoNome.Trim();
             SetDataAtualizacao();
         }
     }
