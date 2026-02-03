@@ -1,6 +1,10 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="Vendas.API/Vendas.API.csproj" Id="37b602a5-f483-4621-ad5d-c67b067714a4" />
+    <Project Path="Vendas.Application/Vendas.Application.csproj" Id="93c86778-fd7f-456a-9510-e827cf9de269" />
+    <Project Path="Vendas.Blazor/Vendas.Blazor.csproj" Id="9cd9d6c0-cef2-443a-8e01-7200ce2903d2" />
     <Project Path="Vendas.Domain/Vendas.Domain.csproj" />
+    <Project Path="Vendas.Infra/Vendas.Infra.csproj" Id="2783e8df-3537-41de-be0e-f241429f5768" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="Vendas.Domain.Tests/Vendas.Domain.Tests.csproj" />
