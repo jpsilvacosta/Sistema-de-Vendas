@@ -22,10 +22,10 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [Fact(DisplayName = "Deve criar endereço válido")]
         public void Deve_Criar_Endereco_Valido()
         {
-            //Arrange & Act
+             
             var endereco = CriarEnderecoValido();
 
-            //Assert
+            
             endereco.Cep.Should().Be("12345678");
             endereco.Logradouro.Should().Be("Rua A");
             endereco.Numero.Should().Be("100");
@@ -42,7 +42,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [InlineData(" ")]
         public void Deve_Lancar_Erro_Quando_CEP_For_Invalido(string? cepInvalido)
         {
-            //Arrange & Act
+             
             Action act = () => new Endereco(
                 cep: cepInvalido!,
                 logradouro: "Rua A",
@@ -53,7 +53,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
                 pais: "Brasil"
                 );
 
-            //Assert
+            
             act.Should().Throw<DomainException>()
                 .WithMessage("O CEP é obrigatório.");
         }
@@ -61,7 +61,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [Fact]
         public void Deve_Lancar_Erro_Quando_CEP_Nao_Tiver_8_Digitos()
         {
-            //Arrange & Act
+             
             Action act = () => new Endereco(
                 cep: "1234",
                 logradouro: "Rua A",
@@ -72,7 +72,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
                 pais: "Brasil"
                 );
 
-            //Assert
+            
             act.Should().Throw<DomainException>()
                 .WithMessage("CEP inválido.");
         }
@@ -92,7 +92,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
             string? estado,
             string? pais)
         {
-            //Arrange & Act
+             
             Action act = () => new Endereco(
                 cep: "12345678",
                 logradouro = logradouro!,
@@ -103,17 +103,17 @@ namespace Vendas.Domain.Tests.Clientes.Entities
                 pais = pais!
                 );
 
-            //Assert
+            
             act.Should().Throw<DomainException>();
         }
 
         [Fact(DisplayName = "Deve atualizar endereço com dados válidos")]
         public void Deve_Atualizar_Endereco_Com_Dados_Validos()
         {
-            //Arrange
+            
             var endereco = CriarEnderecoValido();
 
-            //Act
+            
             endereco.Atualizar(
                 cep: "87654321",
                 logradouro: "Rua B",
@@ -125,7 +125,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
                 complemento: "Apto 121"
                 );
 
-            //Assert
+            
             endereco.Cep.Should().Be("87654321");
             endereco.Logradouro.Should().Be("Rua B");
             endereco.Numero.Should().Be("200");
@@ -139,10 +139,10 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [Fact(DisplayName = "Deve lançar erro ao atualizar com CEP inválido")]
         public void Deve_Lancar_Erro_Ao_Atualizar_Com_CEP_Invalido()
         {
-            //Arrange
+            
             var endereco = CriarEnderecoValido();
 
-            //Act
+            
             Action act = () => endereco.Atualizar(
                 cep: "123",
                 logradouro: "Rua Teste",
@@ -153,7 +153,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
                 pais: "Brasil"
                 );
 
-            //Assert
+            
             act.Should().Throw<DomainException>()
                 .WithMessage("CEP inválido.");
         }
@@ -161,10 +161,10 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [Fact(DisplayName = "Deve lançar erro ao atualizar com campo obrigatório inválido.")]
         public void Deve_Lancar_Erro_Ao_Atualizar_Com_Campo_Obrigatorio_Invalido()
         {
-            //Arrange
+            
             var endereco = CriarEnderecoValido();
 
-            //Act
+            
             Action act = () => endereco.Atualizar(
                 cep: "12345678",
                 logradouro: "",
@@ -175,7 +175,7 @@ namespace Vendas.Domain.Tests.Clientes.Entities
                 pais: "Brasil"
                 );
 
-            //Assert
+            
             act.Should().Throw<DomainException>();
         }
     }

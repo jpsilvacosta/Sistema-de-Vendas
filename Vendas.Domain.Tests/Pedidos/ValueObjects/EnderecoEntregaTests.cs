@@ -54,11 +54,11 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
         [Fact(DisplayName = "Dois EnderecosEntrega com mesmos dados devem ser iguais (VOs)")]
         public void EnderecosDevemSerIguais_QuandoPossuemMesmosValores()
         {
-            //Arrange
+            
             var endereco1 = EnderecoEntrega.Criar("12345-678", "Rua A", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
             var endereco2 = EnderecoEntrega.Criar("12345-678", "Rua A", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
 
-            //Assert
+            
             endereco1.Should().Be(endereco2);
             (endereco1 == endereco2).Should().BeTrue();
         }
@@ -66,10 +66,10 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
         [Fact(DisplayName = "EnderecosEntrega com dados diferentes não devem ser iguais")]
         public void EnderecosDevemSerDiferentes_QuandoPossuemValoresDiferentes()
         {
-            //Arrange
+            
             var endereco1 = EnderecoEntrega.Criar("12345-678", "Rua A", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
             var endereco2 = EnderecoEntrega.Criar("12345-678", "Rua X", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
-            //Assert
+            
             endereco1.Should().NotBe(endereco2);
             (endereco1 != endereco2).Should().BeTrue();
         }
@@ -80,13 +80,13 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
             // Arrange
             var endereco = EnderecoEntrega.Criar("12345-678", "Rua das Flores", "Apto 101", "Centro", "SP", "São Paulo", "Brasil");
 
-            //Act
+            
             Action act = () =>
             {
                 //Tentativa hipotética (conceitual) de alterar uma propriedade
             };
 
-            //Assert
+            
             endereco.GetType().GetProperties()
                 .All(p => p.SetMethod == null || p.SetMethod.IsPrivate)
                 .Should().BeTrue("as propriedades do VO devem ser imutáveis");

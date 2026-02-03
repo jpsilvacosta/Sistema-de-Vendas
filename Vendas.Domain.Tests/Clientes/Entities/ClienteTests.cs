@@ -40,10 +40,10 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [Fact(DisplayName = "Construtor com dados válidos deve criar cliente.")]
         public void Construtor_ComDadosValidos_DeveCriarCliente()
         {
-            //Arrange & Act
+             
             var cliente = CriarClienteValido();
 
-            //Assert
+            
             cliente.Status.Should().Be(StatusCliente.Ativo);
             cliente.Sexo.Should().Be(Sexo.Masculino);
             cliente.EstadoCivil.Should().Be(EstadoCivil.Solteiro);
@@ -54,10 +54,10 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [Fact(DisplayName = "Construtor deve gerar evento cliente cadastrado")]
         public void Construtor_DeveGerarEventoClienteCadastrado()
         {
-            //Arrange & Act
+             
             var cliente = CriarClienteValido();
 
-            //Assert
+            
             cliente.DomainEvents.Should().ContainSingle().Which.Should().BeOfType<ClienteCadastradoEvent>();
         }
 
@@ -69,17 +69,17 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [InlineData("Endereco")]
         public void Construtor_ComParametroObrigatorioNulo_DeveLancarDomainException(string campo)
         {
-            //Arrange
+            
             NomeCompleto? nome = campo == "Nome" ? null : CriarNomeCompleto();
             Cpf? cpf = campo == "Cpf" ? null : CriarCpf();
             Email? email = campo == "Email" ? null : CriarEmail();
             Telefone? telefone = campo == "Telefone" ? null : CriarTelefone();
             Endereco? endereco = campo == "Endereco" ? null : CriarEndereco();
 
-            //Act
+            
             Action act = () => new Cliente(nome!, cpf!, email!, telefone!, endereco!);
 
-            //Assert
+            
             act.Should().Throw<DomainException>();
         }
 
@@ -90,10 +90,10 @@ namespace Vendas.Domain.Tests.Clientes.Entities
             var cliente = CriarClienteValido();
             var novo = CriarEndereco("02134000", "Rua Augusta");
 
-            //Act
+            
             cliente.AdicionarEndereco(novo);
 
-            //Assert
+            
             cliente.Enderecos.Should().HaveCount(2);
         }
 
@@ -102,14 +102,14 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [InlineData(false)]
         public void AdicionarEndereco_ValidacaoDeNuLo(bool usarNulo)
         {
-            //Arrange
+            
             var cliente = CriarClienteValido();
             Endereco? endereco = usarNulo ? null : CriarEndereco();
 
-            //Act
+            
             Action act = () => cliente.AdicionarEndereco(endereco!);
 
-            //Assert
+            
             if (usarNulo)
                 act.Should().Throw<DomainException>();
             else
@@ -119,15 +119,15 @@ namespace Vendas.Domain.Tests.Clientes.Entities
         [Fact(DisplayName = "AdicionarEndereco deve atualizar data de modificação")]
         public void AdicionarEndereco_DeveAtualizarDataModificacao()
         {
-            //Arrange
+            
             var cliente = CriarClienteValido();
             var dataAnterior = cliente.DataAtualizacao ?? DateTime.UtcNow;
 
-            //Act
+            
             System.Threading.Thread.Sleep(5);
             cliente.AdicionarEndereco(CriarEndereco("02134000", "Rua Augusta"));
 
-            //Assert
+            
             cliente.DataAtualizacao.Should().BeAfter(dataAnterior);
         }
 

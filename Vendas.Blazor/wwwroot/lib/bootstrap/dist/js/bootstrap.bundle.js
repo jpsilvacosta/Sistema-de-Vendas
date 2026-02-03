@@ -1547,7 +1547,7 @@
           toggle: false
         }));
       }
-      if (activeChildren.length && activeChildren[0]._isTransitioning) {
+      if (activeChildren.length &iveChildren[0]._isTransitioning) {
         return;
       }
       const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$6);
