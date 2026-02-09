@@ -8,7 +8,7 @@
         public decimal ValorTotal { get; }
         public string Status {  get; }
 
-        public CriarPedidoResultDto(Guid pedidoId, string numeroPedido, DateTime dataCriacao, decimal valorTotal
+        public CriarPedidoResultDto(Guid pedidoId, string numeroPedido, DateTime dataCriacao, decimal valorTotal,
                                     string status)
         {
             PedidoId = pedidoId;

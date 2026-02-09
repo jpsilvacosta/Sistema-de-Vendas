@@ -1,6 +1,5 @@
 ﻿using Vendas.Application.Abstractions.Persistence;
 using Vendas.Domain.Common.Exceptions;
-using Vendas.Domain.Pedidos;
 using Vendas.Domain.Pedidos.ValueObjects;
 
 namespace Vendas.Application.Commands.PedidosCommands.CancelarPedido
