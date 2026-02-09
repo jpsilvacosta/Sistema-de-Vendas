@@ -1,4 +1,4 @@
-﻿using Vendas.Domain.Clientes.Entities;
+﻿using Vendas.Domain.Clientes;
 
 namespace Vendas.Application.Abstractions.Persistence
 {
