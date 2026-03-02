@@ -11,7 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\ClientesCommands\" />
+    <Folder Include="Commands\ClientesCommands\CriarCliente\" />
+    <Folder Include="Commands\ClientesCommands\AtualizarPerfilCliente\" />
+    <Folder Include="Commands\ClientesCommands\BloquearCliente\" />
+    <Folder Include="Commands\ClientesCommands\AtivarCliente\" />
+    <Folder Include="Commands\ClientesCommands\AdicionarEnderecoAoCliente\" />
+    <Folder Include="Commands\ClientesCommands\AlterarEnderecoDoCliente\" />
+    <Folder Include="Commands\ClientesCommands\DefinirEnderecoPrincipal\" />
+    <Folder Include="Commands\ClientesCommands\RemoverEnderecoDoCliente\" />
   </ItemGroup>
 
 </Project>

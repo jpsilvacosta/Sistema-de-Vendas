@@ -12,6 +12,7 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
             // Arrange
             var cep = "12345-678";
             var logradouro = "Rua das Flores";
+            var numero = "100";
             var complemento = "Apto 101";
             var bairro = "Centro";
             var estado = "SP";
@@ -19,12 +20,13 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
             var pais = "Brasil";
 
             // Act
-            var endereco = EnderecoEntrega.Criar(cep, logradouro, complemento, bairro, estado, cidade, pais);
+            var endereco = EnderecoEntrega.Criar(cep, logradouro, numero, complemento, bairro, estado, cidade, pais);
 
             // Assert
             endereco.Should().NotBeNull();
             endereco.Cep.Should().Be(cep);
             endereco.Logradouro.Should().Be(logradouro);
+            endereco.Numero.Should().Be(numero);
             endereco.Complemento.Should().Be(complemento);
             endereco.FormatarEndereco().Should().Contain("Rua das Flores");
         }
@@ -38,13 +40,14 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
             // Arrange
             var logradouro = "Rua das Flores";
             var complemento = "Casa";
+            var numero = "100";
             var bairro = "Centro";
             var estado = "SP";
             var cidade = "São Paulo";
             var pais = "Brasil";
 
             // Act
-            Action act = () => EnderecoEntrega.Criar(cepInvalido, logradouro, complemento, bairro, estado, cidade, pais);
+            Action act = () => EnderecoEntrega.Criar(cepInvalido, logradouro, numero, complemento, bairro, estado, cidade, pais);
 
             // Assert
             act.Should().Throw<DomainException>()
@@ -55,8 +58,8 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
         public void EnderecosDevemSerIguais_QuandoPossuemMesmosValores()
         {
             
-            var endereco1 = EnderecoEntrega.Criar("12345-678", "Rua A", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
-            var endereco2 = EnderecoEntrega.Criar("12345-678", "Rua A", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
+            var endereco1 = EnderecoEntrega.Criar("12345-678", "Rua A","Numero 100", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
+            var endereco2 = EnderecoEntrega.Criar("12345-678", "Rua A", "Numero 100", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
 
             
             endereco1.Should().Be(endereco2);
@@ -67,8 +70,8 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
         public void EnderecosDevemSerDiferentes_QuandoPossuemValoresDiferentes()
         {
             
-            var endereco1 = EnderecoEntrega.Criar("12345-678", "Rua A", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
-            var endereco2 = EnderecoEntrega.Criar("12345-678", "Rua X", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
+            var endereco1 = EnderecoEntrega.Criar("12345-678", "Rua A", "Numero 100", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
+            var endereco2 = EnderecoEntrega.Criar("12345-678", "Rua X", "Numero 100", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil");
             
             endereco1.Should().NotBe(endereco2);
             (endereco1 != endereco2).Should().BeTrue();
@@ -78,7 +81,7 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
         public void EnderecoEntrega_DeveSerImutavel_AposCriacao()
         {
             // Arrange
-            var endereco = EnderecoEntrega.Criar("12345-678", "Rua das Flores", "Apto 101", "Centro", "SP", "São Paulo", "Brasil");
+            var endereco = EnderecoEntrega.Criar("12345-678", "Rua das Flores", "Numero 100", "Apto 101", "Centro", "SP", "São Paulo", "Brasil");
 
             
             Action act = () =>
@@ -93,16 +96,16 @@ namespace Vendas.Domain.Tests.Pedidos.ValueObjects
         }
 
         [Theory(DisplayName = "Deve lançar DomainException quando campos obrigatórios forem nulos ou vazios")]
-        [InlineData(null, "Rua A", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil")]
-        [InlineData("12345-678", "", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil")]
-        [InlineData("12345-678", "Rua A", "Apto 1", null, "SP", "Cidade C", "Brasil")]
+        [InlineData(null, "Rua A", "Numero 100", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil")]
+        [InlineData("12345-678", "", "Numero 100", "Apto 1", "Bairro B", "SP", "Cidade C", "Brasil")]
+        [InlineData("12345-678", "Rua A", "Numero 100", "Apto 1", null, "SP", "Cidade C", "Brasil")]
 
         public void Criar_DeveLancarDomainException_QuandoCamposObrigatoriosForemNulosOuVazios(
-            string cep, string logradouro, string complemento, string bairro,
+            string cep, string logradouro, string numero, string complemento, string bairro,
             string estado, string cidade, string pais)
         {
             // Act
-            Action act = () => EnderecoEntrega.Criar(cep, logradouro, complemento, bairro, estado, cidade, pais);
+            Action act = () => EnderecoEntrega.Criar(cep, logradouro, numero, complemento, bairro, estado, cidade, pais);
 
             // Assert
             act.Should().Throw<DomainException>()

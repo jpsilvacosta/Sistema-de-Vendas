@@ -13,6 +13,7 @@ namespace Vendas.Domain.Tests.Pedidos
         private static EnderecoEntrega CriarEnderecoValido()
             => EnderecoEntrega.Criar(
                 cep: "12345-678",
+                numero: "100",
                 logradouro: "Rua Exemplo, 123",
                 complemento: "Apto 45",
                 bairro: "Bairro Exemplo",
@@ -202,6 +203,7 @@ namespace Vendas.Domain.Tests.Pedidos
             var novoEndereco = EnderecoEntrega.Criar(
                 cep: "98765-432",
                 logradouro: "Avenida Nova, 456",
+                numero: "100",
                 complemento: "Casa",
                 bairro: "Bairro Novo",
                 estado: "RJ",
@@ -229,6 +231,7 @@ namespace Vendas.Domain.Tests.Pedidos
             var novoEndereco = EnderecoEntrega.Criar(
                 cep: "98765-432",
                 logradouro: "Avenida Nova, 456",
+                numero: "100",
                 complemento: "Casa",
                 bairro: "Bairro Novo",
                 estado: "RJ",

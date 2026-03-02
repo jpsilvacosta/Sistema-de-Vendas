@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Clientes\ValueObjects\**" />
+    <EmbeddedResource Remove="Clientes\ValueObjects\**" />
+    <None Remove="Clientes\ValueObjects\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Vendas.Domain\Vendas.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Clientes\ValueObjects\" />
   </ItemGroup>
 
 </Project>
