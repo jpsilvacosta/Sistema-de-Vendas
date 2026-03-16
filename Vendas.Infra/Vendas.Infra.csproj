@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Vendas.Domain\Vendas.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Gateways\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Persistence\" />
+  </ItemGroup>
+
 </Project>
