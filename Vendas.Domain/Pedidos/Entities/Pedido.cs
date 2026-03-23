@@ -145,7 +145,7 @@ namespace Vendas.Domain.Pedidos
 
         public void CancelarPedido(MotivoCancelamento? motivo = null)
         {
-            Guard.Against<DomainException>(StatusPedido >= StatusPedido.EmSeparacao, "Não é possível cancelar um pedido que já está em separação ou posterior.");
+            Guard.Against<DomainException>(StatusPedido >= StatusPedido.Pendente, "Somente pedidos pendentes podem ser cancelados.");
 
             StatusPedido = StatusPedido.Cancelado;
             SetDataAtualizacao();
