@@ -11,7 +11,7 @@ namespace Vendas.Application.Commands.PedidosCommands.MarcarPedidoComoEmSeparaca
             _pedidoRepository = pedidoRepository;
         }
 
-        public async Task<MarcarPedidoComoEmSeparacaoResultDto> Handle(MarcarPedidoComoEmSeparacaoCommand command, CancellationToken cancellationToken = default)
+        public async Task<MarcarPedidoComoEmSeparacaoResultDto> HandleAsync(MarcarPedidoComoEmSeparacaoCommand command, CancellationToken cancellationToken = default)
         {
             var pedido = await _pedidoRepository.ObterPorIdAsync(command.PedidoId, cancellationToken)
                 ?? throw new DomainException("Pedido não encontrado.");

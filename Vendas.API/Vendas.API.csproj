@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Vendas.Application\Vendas.Application.csproj" />
     <ProjectReference Include="..\Vendas.Domain\Vendas.Domain.csproj" />
+    <ProjectReference Include="..\Vendas.Infra\Vendas.Infra.csproj" />
   </ItemGroup>
 
 </Project>
