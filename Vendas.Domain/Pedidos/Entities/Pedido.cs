@@ -36,11 +36,14 @@ namespace Vendas.Domain.Pedidos
             EnderecoEntrega = enderecoEntrega;
             StatusPedido = StatusPedido.Pendente;
             ValorTotal = 0m;
-
-            GerarNumeroPedido();
         }
 
-        public static Pedido Criar(Guid clienteId, EnderecoEntrega enderecoEntrega) => new(clienteId, enderecoEntrega);
+        public static Pedido Criar(Guid clienteId, EnderecoEntrega enderecoEntrega)
+        {
+            var pedido = new Pedido(clienteId, enderecoEntrega);
+            pedido.GerarNumeroPedido();
+            return pedido;
+        }
 
         public void AdicionarItem(Guid produtoId, string nomeProduto, decimal precoUnitario, int quantidade)
         {
