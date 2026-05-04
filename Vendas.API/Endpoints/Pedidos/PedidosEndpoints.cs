@@ -58,21 +58,21 @@ namespace Vendas.API.Endpoints.Pedidos
                 }
             })).WithSummary("Exibe os IDs dos dados disponíveis nos Fakes para usar nos testes.");
 
-            group.MapGet("/", async (IPedidoRepository repo, CancellationToken ct) =>
-            {
-                var pedidos = await repo.ListarTodosAsync(ct);
-                var resultado = pedidos.Select(p => new
-                {
-                    p.Id,
-                    p.NumeroPedido,
-                    p.ClienteId,
-                    p.ValorTotal,
-                    Status = p.StatusPedido.ToString(),
-                    p.DataCriacao,
-                    TotalItens = p.Itens.Count
-                });
-                return Results.Ok(resultado);
-            }).WithSummary("Lista todos os pedidos em memória.");
+            //group.MapGet("/", async (IPedidoRepository repo, CancellationToken ct) =>
+            //{
+            //    var pedidos = await repo.ListarTodosAsync(ct);
+            //    var resultado = pedidos.Select(p => new
+            //    {
+            //        p.Id,
+            //        p.NumeroPedido,
+            //        p.ClienteId,
+            //        p.ValorTotal,
+            //        Status = p.StatusPedido.ToString(),
+            //        p.DataCriacao,
+            //        TotalItens = p.Itens.Count
+            //    });
+            //    return Results.Ok(resultado);
+            //}).WithSummary("Lista todos os pedidos em memória.");
 
             group.MapGet("/{id:guid}", async (Guid id, IPedidoRepository repo, CancellationToken ct) =>
             {
