@@ -12,6 +12,8 @@ namespace Vendas.Infra.Persistence.Configurations
             builder.ToTable("Pedidos");
             builder.HasKey(p => p.Id);
 
+            builder.Property(p => p.Id).ValueGeneratedNever();
+
             builder.Property(p => p.NumeroPedido).IsRequired().HasMaxLength(20);
 
             builder.Property(p => p.ClienteId).IsRequired();
@@ -53,6 +55,8 @@ namespace Vendas.Infra.Persistence.Configurations
             builder.Navigation(p => p.Pagamentos)
                 .HasField("_pagamentos")
                 .UsePropertyAccessMode(PropertyAccessMode.Field);
+
+            builder.Ignore(p => p.DomainEvents);
         }
     }
 }

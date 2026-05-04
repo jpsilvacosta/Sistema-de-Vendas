@@ -38,6 +38,13 @@ namespace Vendas.Infra.Repositories
 
         public async Task AtualizarAsync(Pedido pedido, CancellationToken ct = default)
         {
+            Console.WriteLine("=== ENTRIES ===");
+            foreach (var entry in _context.ChangeTracker.Entries())
+            {
+                var idValue = "N/A";
+                try { idValue = entry.Property("Id").CurrentValue?.ToString(); } catch { }
+                Console.WriteLine($"Type: {entry.Entity.GetType().Name} | State: {entry.State} | Key: {idValue}");
+            }
             await _context.SaveChangesAsync(ct);
         }
     }

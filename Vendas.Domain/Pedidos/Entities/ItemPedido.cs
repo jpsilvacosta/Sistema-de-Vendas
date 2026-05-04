@@ -13,7 +13,7 @@ namespace Vendas.Domain.Pedidos
         public decimal DescontoAplicado { get; private set; }
         public decimal ValorTotal { get; private set; }
 
-        internal ItemPedido(Guid produtoId, string nomeProduto, decimal precoUnitario, int quantidade)
+        internal ItemPedido(Guid produtoId, string nomeProduto, decimal precoUnitario, int quantidade) : base(Guid.NewGuid())
         {
             Guard.AgainstEmptyGuid(produtoId, nameof(produtoId), "ProdutoId inválido.");
             Guard.AgainstNullOrWhiteSpace(nomeProduto, nameof(nomeProduto), "O nome do produto é obrigatório.");
@@ -27,6 +27,11 @@ namespace Vendas.Domain.Pedidos
             DescontoAplicado = 0;
 
             CalcularValorTotal();
+        }
+
+        public ItemPedido() : base()
+        {
+            
         }
 
         public void AplicarDesconto(decimal desconto)

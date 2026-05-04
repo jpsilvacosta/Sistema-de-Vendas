@@ -15,7 +15,9 @@ namespace Vendas.Infra.Persistence.Context
             {
                 item.ToTable("ItensPedido");
                 item.HasKey(i => i.Id);
+                item.Property(i => i.Id).ValueGeneratedNever();
                 item.Property<Guid>("PedidoId").IsRequired();
+                item.Property(i => i.DataCriacao).IsRequired();
                 item.Property(i => i.DataAtualizacao).IsRequired(false);
                 item.Ignore(i => i.DomainEvents);
                 item.Property(i => i.NomeProduto).IsRequired().HasMaxLength(200);
@@ -28,6 +30,8 @@ namespace Vendas.Infra.Persistence.Context
             {
                 pag.ToTable("Pagamentos");
                 pag.HasKey(i => i.Id);
+                pag.Property(p => p.Id).ValueGeneratedNever();
+                pag.Property(p => p.DataCriacao).IsRequired();
                 pag.Property(p => p.DataAtualizacao).IsRequired(false);
                 pag.Ignore(p => p.DomainEvents);
                 pag.Property(p => p.Valor).HasPrecision(18, 2);

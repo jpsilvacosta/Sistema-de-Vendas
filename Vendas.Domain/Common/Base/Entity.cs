@@ -10,12 +10,12 @@ namespace Vendas.Domain.Common.Base
 
         protected Entity()
         {
-            DataCriacao = DateTime.UtcNow;
         }
 
         protected Entity(Guid id)
         {
             Id = id;
+            DataCriacao = DateTime.UtcNow;
         }
 
         protected void SetDataAtualizacao()

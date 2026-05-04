@@ -4,16 +4,17 @@ namespace Vendas.Domain.Pedidos.Integration.Clientes
 {
     public sealed class ClientesAcl
     {
-        public EnderecoEntrega TraduzirEndereco(EnderecoDto dto) {
+        public EnderecoEntrega TraduzirEndereco(EnderecoDto dto)
+        {
             return EnderecoEntrega.Criar(
-                dto.Cep,
-                dto.Logradouro,
-                dto.Numero,
-                dto.Bairro,
-                dto.Cidade,
-                dto.Estado,
-                dto.Pais,
-                dto.Complemento);
+            cep: dto.Cep,
+            logradouro: dto.Logradouro,
+            numero: dto.Numero,
+            complemento: dto.Complemento,
+            bairro: dto.Bairro,
+            estado: dto.Estado,
+            cidade: dto.Cidade,
+            pais: dto.Pais);
         }
     }
 }
